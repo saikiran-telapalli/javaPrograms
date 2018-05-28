@@ -1,3 +1,6 @@
+/**
+ * @author saikiran
+ */
 package ArrayPrograms;
 
 public class ArrangeAlternate {
