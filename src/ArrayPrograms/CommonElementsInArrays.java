@@ -45,6 +45,10 @@ public class CommonElementsInArrays {
 		Arrays.sort(arr2);
 		Arrays.sort(arr3);
 		
+		System.out.println(Arrays.toString(arr1));
+		System.out.println(Arrays.toString(arr2));
+		System.out.println(Arrays.toString(arr3));
+		
 		System.out.println("Common elements in an array are:");
 		int i=0, j=0, k =0;
 		while(i<arr1.length && j<arr2.length && k<arr3.length) {
@@ -56,12 +60,15 @@ public class CommonElementsInArrays {
 			}
 			else if(arr1[i] < arr2[j]) {
 				i++;
+				
 			}
 			else if(arr2[j] < arr3[k]) {
 				j++;
+				
 			}
 			else {
 				k++;
+				
 			}
 			
 		}
