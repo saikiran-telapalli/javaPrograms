@@ -24,7 +24,7 @@ public class RemoveDupFromArray {
 		for(int i=0; i<arraySize; i++) {
 			System.out.print(uniqueArray[i]+" ");
 		}
-		System.out.println("After removing duplicate from array:");
+		System.out.println("\nAfter removing duplicate from array:");
 		System.out.println(Arrays.toString(uniqueArray));
 
 	}

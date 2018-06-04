@@ -15,12 +15,13 @@ public class MissingNumbersInArray {
 		}
 
 		//System.out.println("arr[n-1]:"+arr[n-1]); //Finding last element in array to loop upto
-		int num =0;
+		//int num =0;
 		int j=0;
 		System.out.println("\nMissing elements in an array are:");
-		for(int i=arr[num]; i<= arr[n-1]; i++) {
-
-			if(j<n && i==arr[j]) {
+		
+		for(int i=arr[0]; i<= arr[n-1]; i++) {
+			
+			if(j<arr[n-1] && i==arr[j]) {
 				j++;
 			}
 			else {

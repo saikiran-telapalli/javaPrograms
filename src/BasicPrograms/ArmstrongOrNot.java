@@ -25,12 +25,13 @@ public class ArmstrongOrNot {
 			num /= 10;
 		}
 
-		/*  Using for loop
-		    for( ;number!=0;number /= 10){
-    			temp = number % 10;
+//		  Using for loop
+		   /* for( ; num!=0; num /= 10){
+    			int temp = num % 10;
     			total = total + temp*temp*temp;
 			}
-		 */
+			*/
+		 
 		if(total == number) {
 			System.out.println(number+" Number is a Armstrong");
 		}
