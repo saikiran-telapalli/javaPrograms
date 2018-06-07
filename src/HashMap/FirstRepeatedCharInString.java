@@ -1,39 +1,48 @@
 package HashMap;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
 public class FirstRepeatedCharInString {
-	static char firstRepeating(char str[])
-	{
-        // Creates an empty hashset
-        HashSet<Character> h = new HashSet<>();
- 
-        // Traverse the input array from left to right
-        for (int i=0; i<=str.length-1; i++)
-        {
-            char c = str[i];
- 
-            // If element is already in hash set, update x
-            // and then break
-            if (h.contains(c))
-                return c;
- 
-            else // Else add element to hash set
-                h.add(c);
-        }
- 
-        return '\0';
-    }
- 
-    // Driver method to test above method
-    public static void main (String[] args)
-    {
-        String str = "geeksforgeeks";
-        char[] arr = str.toCharArray();
-        System.out.println(firstRepeating(arr));
-    }
 
+	static void firstRepeating(String str) {
+		char[] strArray = str.toCharArray();
+
+		//Creating a HashMap containing char as a key and occurrences as a value
+		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+
+		for(char ch : strArray) {
+			if(map.containsKey(ch)) {
+
+				//If char is present in charCountMap, incrementing it's count by 1
+				map.put(ch, map.get(ch)+1);
+			}
+			else {
+				map.put(ch, 1);
+			}
+		}
+
+		//checking for first repeated character
+		for(char ch: strArray) {
+			if(map.get(ch) >1) {
+				System.out.println("First Repeated Character In " +str+ " is: "+ch);
+				break;
+			}
+		}
+
+		//checking for first non-repeated character
+		for(char ch: strArray) {
+			if(map.get(ch) ==1) {
+				System.out.println("First Non-Repeated Character In "+str+ " is: "+ch);
+				break;
+			}
+		}
+
+	}
+
+
+	public static void main (String[] args){
+		String str = "geeksforgeeks";  
+		firstRepeating(str);
+	}
 }
-
-//Amazon Interview Question : First Non repeated character in String
 

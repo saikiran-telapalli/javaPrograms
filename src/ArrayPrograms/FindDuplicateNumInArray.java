@@ -32,8 +32,8 @@ public class FindDuplicateNumInArray {
 	public static void main(String[] args) {
 		int arr[] = {2, 4, 3, 5, 6, 2, 3};
 		int n = arr.length;
-		findDuplicateNum(arr, n);
-		//findDupUsingHshSet();
+		//findDuplicateNum(arr, n);
+		findDupUsingHshSet();
 	}
 
 }

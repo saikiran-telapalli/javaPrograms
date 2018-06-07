@@ -25,6 +25,8 @@ public class SortMapByKey {
 		
 		System.out.println("\nUnSorted Map......");
 		printmap(unsortMap);
+		
+		//System.out.println(unsortMap);
 
 		
 		//logic
@@ -33,8 +35,8 @@ public class SortMapByKey {
 		printmap(treemap);
 	}
 
-	public static <K, V> void printmap(Map<K, V> map) {
-		for(Entry<K, V>entry : map.entrySet()) {
+	public static <K, V> void printmap(Map<K, V> test) {
+		for(Entry<K, V>entry : test.entrySet()) {
 			System.out.println("Key: " +entry.getKey() +"\t value: "+entry.getValue());
 		}
 	}

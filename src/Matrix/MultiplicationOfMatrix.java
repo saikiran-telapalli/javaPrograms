@@ -1,5 +1,6 @@
 package Matrix;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MultiplicationOfMatrix {
@@ -19,6 +20,7 @@ public class MultiplicationOfMatrix {
 				first[i][j] = in.nextInt();
 			}
 		}
+		
 		System.out.println("Enter the number of rows and columns of second matrix");
 		p = in.nextInt();
 		q = in.nextInt();

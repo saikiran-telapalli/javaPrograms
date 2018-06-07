@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DupWordsInString {
+public class DupWordsInStringUsingFrequency {
 
 	public static void main(String[] args) {
 		 

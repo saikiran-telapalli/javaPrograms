@@ -14,7 +14,7 @@ public class RemoveDupFromArray {
 				if(dupArray[i] == dupArray[j]) {
 					dupArray[j] = dupArray[arraySize-1];
 					arraySize--;
-
+					j--;
 				}
 			}
 		}

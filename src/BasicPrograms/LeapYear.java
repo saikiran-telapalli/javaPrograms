@@ -63,6 +63,8 @@ public class LeapYear {
 				System.out.print(i+ " ");
 			}
 		}
+		
+		
 	}
 	
 	public static void main(String[] args) {
@@ -70,7 +72,8 @@ public class LeapYear {
 		System.out.println("Enter the year");
 		int num = in.nextInt();
 		
-		//leapYear(num);
+		leapYear(num);
+		
 		printLeapYears(num);
 	}
 

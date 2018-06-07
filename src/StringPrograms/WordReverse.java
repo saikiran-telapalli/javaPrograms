@@ -31,8 +31,8 @@ public class WordReverse {
 		System.out.println("Enter the word to reverse:");
 		String word = scan.nextLine();
 
-		char str[]= word.toCharArray();
-		int n = str.length;
+		char chr[]= word.toCharArray();
+		int n = chr.length;
 		System.out.println("n: "+n);
 		int start=0;
 
@@ -40,34 +40,34 @@ public class WordReverse {
 
 
 			//logic
-			if(str[i] == ' ' && i>0) {
-				reverseWord(str,start, i-1);
+			if(chr[i] == ' ' && i>0) {
+				System.out.println("i: "+i);
+				reverseWord(chr,start, i-1);
 				start = i+1;
 			}
 			else if(i == n-1) {
-				reverseWord(str,start, i);
+				System.out.println("i: "+i);
+				reverseWord(chr,start, i);
 			}
 
 		}
 
-		reverseWord(str, 0, n-1);
+		reverseWord(chr, 0, n-1);
 
-		System.out.println(str);
+		System.out.println(chr);
 	}
 
-	public static void reverseWord(char str[], int start, int end) {
+	public static void reverseWord(char chr[], int start, int end) {
 		while(start < end) {
 
-			char temp = str[start];
-			str[start] = str[end];
-			str[end] = temp;
+			char temp = chr[start];
+			chr[start] = chr[end];
+			chr[end] = temp;
 
 			start++;
 			end--;
-
 		}
 	}
-
 
 
 	public static void main(String[] args) {

@@ -85,7 +85,7 @@ public class FactOfLargeNum {
  * Using predefined function BigInteger
  */
 	public static void uisngBigInt(){
-		BigInteger fac=new BigInteger("1");
+		BigInteger fac = new BigInteger("1");
 
 		Scanner sc=new Scanner(System.in);
 		System.out.println("\nEnter a number:");

@@ -32,13 +32,14 @@ public class ReverseAnArray {
 	public static void rvereseNumArray(int arr[], int start, int end){
 
 		int temp;
-		if (start >= end) {
-			return;
-		}
+
+		while(start < end) {
 		temp = arr[start];
 		arr[start] = arr[end];
 		arr[end] = temp;
-		rvereseNumArray(arr, start+1, end-1);
+		start++;
+		end--;
+		}
 	}
 
 

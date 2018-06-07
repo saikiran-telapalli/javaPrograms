@@ -1,4 +1,4 @@
-package BasicPrograms;
+package StringPrograms;
 
 import java.util.Scanner;
 
@@ -34,6 +34,7 @@ public class RemLeadTrailSpaces {
 				break;
 			}
 		}
+		
 		
 		for(k=i; k<=j; k++) {
 			finalString = finalString+ str1.charAt(k);

@@ -9,14 +9,15 @@ public class ReverseNumber {
 	 */
 	public static void reverseNumberWhile(){
 
-		int num, reverse = 0;
+		int num;
+		String reverse = "";
 
 		System.out.println("Enter a number to reverse");
 		Scanner scan = new Scanner(System.in);
 		num = scan.nextInt();
 		//logic
 		while(num != 0){
-			reverse = reverse * 10;
+			//reverse = reverse * 10;
 			reverse = reverse + num%10;
 			num = num/10;    
 		}

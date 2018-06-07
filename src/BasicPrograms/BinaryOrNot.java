@@ -32,7 +32,7 @@ public class BinaryOrNot {
 			System.out.println(number+" Number is not Binary");
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		BinaryOrNot BN = new BinaryOrNot();
 		BN.isBinaryOrNot(10010101);

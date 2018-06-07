@@ -22,13 +22,13 @@ public class FactorsOfNum {
 			}
 		}
 	}
-	static int number = 1;
+	static int i = 1;
 	public static void recursiveFunc(int num) {
-		if(number <= num) {
-			if(num % number ==0) {
-				System.out.print(number+" ");
+		if(i <= num) {
+			if(num % i ==0) {
+				System.out.print(i+" ");
 			}
-			number++;
+			i++;
 			recursiveFunc(num);
 		}
 	}
