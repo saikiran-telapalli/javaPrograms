@@ -10,12 +10,13 @@ import java.util.Set;
 public class MostRepeatedWordInFile {
 
 	public static void main(String[] args) {
-
+		
+		String filepath = "/Users/saikiran/Desktop/reader.txt";
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		BufferedReader reader = null;
 
 		try {
-			reader = new BufferedReader(new FileReader("/Users/saikiran/Desktop/reader.txt"));
+			reader = new BufferedReader(new FileReader(filepath));
 
 			//Reading the first line into currentLine
 			String CurrentLine = reader.readLine();
