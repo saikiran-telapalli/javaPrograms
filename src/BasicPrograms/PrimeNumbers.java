@@ -18,11 +18,13 @@ public class PrimeNumbers {
 		System.out.println("Enter the value of k for prime numbers:");
 		int k = scanner.nextInt();
 		//scanner.close();
+		
 		for (i = 1; i <= k; i++){	
 			int counter = 0; 	  
-			for(num =i; num>=1; num--){
-				if(i%num==0){
+			for(num =i; num >=1; num--){
+				if(i % num == 0){
 					counter = counter + 1;
+					System.out.println(counter);
 				}
 			}
 			if(counter ==2){
@@ -49,7 +51,7 @@ public class PrimeNumbers {
 		//logic
 		for(int i=2;i<=num/2;i++) {
 
-			temp=num%i;
+			temp = num % i;
 			if(temp==0) {
 				isPrime=false;
 				break;

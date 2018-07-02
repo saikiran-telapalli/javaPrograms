@@ -20,7 +20,7 @@ public class PyramidStar {
 				System.out.print("*");
 			}
 			
-			System.out.println("\n");
+			System.out.println("");
 		}
 	}
 }

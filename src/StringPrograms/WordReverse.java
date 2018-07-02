@@ -46,7 +46,7 @@ public class WordReverse {
 				start = i+1;
 			}
 			else if(i == n-1) {
-				System.out.println("i: "+i);
+				System.out.println("i@: "+i);
 				reverseWord(chr,start, i);
 			}
 

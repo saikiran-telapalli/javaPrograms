@@ -25,7 +25,7 @@ public class BubbleSort {
 
 		for(int j=0; j<n-1; j++) {
 			System.out.println("j: "+j);
-			for(int k=0; k<n-j-1; k++) {
+			for(int k=1; k<n-j; k++) {
 				System.out.println("k: "+k);
 				if(arr[k] > arr[k+1]) {
 					temp = arr[k];
