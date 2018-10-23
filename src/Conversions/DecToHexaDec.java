@@ -21,9 +21,9 @@ public class DecToHexaDec {
 		while (num > 0) {
 			// storing remainder in binary array
 			int rem= num % 16;
-			System.out.println(rem);
+			//System.out.println(rem);
 			hexNum[i] = hex[rem];
-			System.out.println("hexNum[i] :"+hexNum[i]);
+			//System.out.println("hexNum[i] :"+hexNum[i]);
 			num = num / 16;
 			i++;
 		}

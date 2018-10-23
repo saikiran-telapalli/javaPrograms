@@ -21,7 +21,7 @@ public class HexaDecToDec {
 	}
 
 	public static void main(String[] args) {
-		int decimal_Value = hexaDecimalToDecimal("1A");
+		int decimal_Value = hexaDecimalToDecimal("A1");
 		System.out.println(decimal_Value);
 	}
 }

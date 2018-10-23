@@ -39,7 +39,7 @@ public class CommonElementsInArrays {
 	public static void moreThan2Arrays() {
 		int arr1[]= {23, 45, 67, 78};
 		int arr2[]= {45, 12, 34, 87, 67};
-		int arr3[]= {67, 89, 23, 45, 56, 34};
+		int arr3[]= {67, 89, 23, 45, 56, 34, 67};
 		//First sort the arrays
 		Arrays.sort(arr1);
 		Arrays.sort(arr2);
@@ -75,7 +75,7 @@ public class CommonElementsInArrays {
 	}
 
 	public static void main(String[] args) {
-		commonElementsForTwoArrays();
-		//moreThan2Arrays();
+		//commonElementsForTwoArrays();
+		moreThan2Arrays();
 	}
 }

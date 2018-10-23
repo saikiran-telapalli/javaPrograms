@@ -16,7 +16,7 @@ public class WordReverse {
 		StringBuilder sb = new StringBuilder();
 		String[] words = word.split(" ");
 		for(int i=words.length-1; i>=0; i--) {
-			sb.append(words[i]).append(' ');
+			sb.append(words[i]).append(" ");
 		}
 		System.out.println("Word after reverse: "+sb);
 	}

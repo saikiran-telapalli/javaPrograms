@@ -18,7 +18,7 @@ public class RemDupWordsWOFuncs {
 		
 		// remove duplicates, using 2 for-loops
 
-		for(int i = 0; i<sizeOfArrays; i++) {
+		for(int i = 0; i<sizeOfArrays-1; i++) {
 			
 			for(int j = i + 1; j<sizeOfArrays; j++) {
 			

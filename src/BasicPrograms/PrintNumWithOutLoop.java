@@ -10,6 +10,9 @@ public class PrintNumWithOutLoop {
 			System.out.print(number+ " ");
 			recurrsiveFun(num+1, toNum);
 		}	
+		if(number > toNum) {
+			System.out.println("staring number should be less than end number");
+		}
 	}
 
 	public static void main(String[] args) {

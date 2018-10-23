@@ -27,7 +27,9 @@ public class DupCharInString {
         for(Character ch : keys){
             if(dupMap.get(ch) > 1){
                 System.out.println(ch+"--->"+dupMap.get(ch));
+               
             }
+            
         }
     }
      

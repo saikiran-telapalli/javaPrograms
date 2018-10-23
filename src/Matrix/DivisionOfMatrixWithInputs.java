@@ -30,8 +30,8 @@ public class DivisionOfMatrixWithInputs {
 		}
 		System.out.println("Divide of both matrix : ");
 		for(int i = 0; i < n; i++) {
-			for(int j = 0; j <= n; j++) {
-				System.out.print(" "+(first[i][j]+second[i][j]));
+			for(int j = 0; j <o; j++) {
+				System.out.print(" "+(first[i][j]/second[i][j]));
 			}
 			System.out.println("");
 		}

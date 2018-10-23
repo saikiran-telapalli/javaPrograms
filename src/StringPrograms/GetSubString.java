@@ -6,7 +6,6 @@ public class GetSubString {
 	static String exptext = "age";
 	static char[] textArray = text.toCharArray();
 	static char[] exptextArray = exptext.toCharArray();
-	boolean substring;
 
 	public boolean isPresent(char[] text, char[] exptext) {
 
@@ -25,6 +24,8 @@ public class GetSubString {
 		}
 		return false;
 	}
+	
+	
 
 	public static void main(String[] args) {
 		GetSubString sbs = new GetSubString();
@@ -36,6 +37,7 @@ public class GetSubString {
 		else {
 			System.out.println(exptext+" is not a substring of "+text);
 		}
+		
 	}
 
 }

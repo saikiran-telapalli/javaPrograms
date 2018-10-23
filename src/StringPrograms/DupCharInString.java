@@ -18,6 +18,7 @@ public class DupCharInString {
 			for(int j=i+1; j<n;j++) {
 				if(text_toChar[i] == text_toChar[j]) {
 					System.out.print(text_toChar[i]+" ");
+					
 				}
 			}
 		}

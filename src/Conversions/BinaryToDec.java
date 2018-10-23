@@ -17,7 +17,7 @@ public class BinaryToDec {
 	}
 	
 	public static void main(String[] args) {
-		String bin_Val = "1001";
+		String bin_Val = "1010";
 		System.out.println(binaryToDec(bin_Val));
 	}
 }

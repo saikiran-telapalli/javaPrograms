@@ -21,7 +21,7 @@ public class InvertedPyramidStar {
 				System.out.print("*");
 			}
 			/* Move to next line */
-			System.out.println("\n");
+			System.out.println("");
 		}
 	}
 }
