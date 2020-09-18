@@ -1,10 +1,7 @@
 package com.dstsystems.Runner;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -21,20 +18,24 @@ public class UpdateFilesWithTags {
     List<String> dirPath;
     int rowCountToUpdate = 0;
 
-    public HashMap<String, String> execlRead() {
+    File file;
+    FileInputStream fis;
+    XSSFWorkbook wb;
+    XSSFSheet sheet, sheet1;
+    static String execlPath = "C:\\Users\\dt224078\\Desktop\\readTestID.xlsx";
 
-        String execlPath = "C:\\Users\\dt224078\\Desktop\\readTestID.xlsx";
+    public HashMap<String, String> execlRead() {
 
         HashMap<String, String> excelVal = new HashMap<String, String>();
         dirPath = new ArrayList<>();
 
         try {
-            File file = new File(execlPath);
-            FileInputStream fis = new FileInputStream(file);
+            file = new File(execlPath);
+            fis = new FileInputStream(file);
 
-            XSSFWorkbook wb = new XSSFWorkbook(fis);
-            XSSFSheet sheet = wb.getSheetAt(0);
-            XSSFSheet sheet1 = wb.getSheetAt(1);
+            wb = new XSSFWorkbook(fis);
+            sheet = wb.getSheetAt(0);
+            sheet1 = wb.getSheetAt(1);
             int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
             int rowCount1 = sheet1.getLastRowNum() - sheet.getFirstRowNum();
 
@@ -57,19 +58,30 @@ public class UpdateFilesWithTags {
         return excelVal;
     }
 
-    public void excelWrite(String hsxStatus, String path) throws IOException, InvalidFormatException {
-        String execlPath = "C:\\Users\\dt224078\\Desktop\\readTestID.xlsx";
+    public void excelWrite(String hsxStatus, String path,int rowCount) throws IOException, InvalidFormatException {
         InputStream inp = new FileInputStream(execlPath);
         Workbook wb = WorkbookFactory.create(inp);
         Sheet sheet = wb.getSheetAt(0);
-        rowCountToUpdate++;
-        Row row = sheet.getRow(rowCountToUpdate);
+        Row row = sheet.getRow(rowCount);
         row.createCell(2).setCellValue(hsxStatus);
         row.createCell(3).setCellValue(path);
         FileOutputStream fileOut = new FileOutputStream(execlPath);
         wb.write(fileOut);
         fileOut.close();
 
+    }
+
+    private static int findRow(XSSFSheet sheet, String cellContent) {
+        for (Row row : sheet) {
+            for (Cell cell : row) {
+                if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
+                    if (cell.getRichStringCellValue().getString().trim().equals(cellContent.replaceAll("@",""))) {
+                        return row.getRowNum();
+                    }
+                }
+            }
+        }
+        return 0;
     }
 
     public static void main(String args[]) throws IOException, InvalidFormatException {
@@ -92,7 +104,7 @@ public class UpdateFilesWithTags {
         subFolderPath = "";
         File directoryPath;
         File filesList[];
-        boolean tagFound = false;
+        int rowWhichHsxFound =0;
 
         try {
             directoryPath = new File(foldersPath);
@@ -122,6 +134,8 @@ public class UpdateFilesWithTags {
                         FileWriter writer = new FileWriter(file.getAbsolutePath());
                         writer.write(toWrite);
                         writer.close();
+                        rowWhichHsxFound = findRow(sheet, entry.getKey());
+                        excelWrite("Updated",file.getAbsolutePath(),rowWhichHsxFound);
                     }
                 }
             }
@@ -160,6 +174,8 @@ public class UpdateFilesWithTags {
                             FileWriter writer = new FileWriter(file.getAbsolutePath());
                             writer.write(toWrite);
                             writer.close();
+                            rowWhichHsxFound = findRow(sheet, entry.getKey());
+                            excelWrite("Updated",file.getAbsolutePath(),rowWhichHsxFound);
                         }
                     }
                 }
