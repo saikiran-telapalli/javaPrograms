@@ -1,6 +1,10 @@
 package com.dstsystems.Runner;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -15,6 +19,7 @@ public class UpdateFilesWithTags {
     String subFolderPath = "";
     HashMap<String, String> ssncTags = execlRead();
     List<String> dirPath;
+    int rowCountToUpdate = 0;
 
     public HashMap<String, String> execlRead() {
 
@@ -35,7 +40,7 @@ public class UpdateFilesWithTags {
 
             for (int i = 1; i < rowCount + 1; i++) {
                 Row row = sheet.getRow(i);
-                excelVal.put("@".concat(row.getCell(0).getStringCellValue().trim()),"@".concat(row.getCell(1).getStringCellValue().trim()));
+                excelVal.put("@".concat(row.getCell(0).getStringCellValue().trim()), "@".concat(row.getCell(1).getStringCellValue().trim()));
                 //excelVal.put(row.getCell(0).getStringCellValue().trim(), row.getCell(1).getStringCellValue().trim());
                 System.out.println();
             }
@@ -52,13 +57,28 @@ public class UpdateFilesWithTags {
         return excelVal;
     }
 
-    public static void main(String args[]) throws IOException {
+    public void excelWrite(String hsxStatus, String path) throws IOException, InvalidFormatException {
+        String execlPath = "C:\\Users\\dt224078\\Desktop\\readTestID.xlsx";
+        InputStream inp = new FileInputStream(execlPath);
+        Workbook wb = WorkbookFactory.create(inp);
+        Sheet sheet = wb.getSheetAt(0);
+        rowCountToUpdate++;
+        Row row = sheet.getRow(rowCountToUpdate);
+        row.createCell(2).setCellValue(hsxStatus);
+        row.createCell(3).setCellValue(path);
+        FileOutputStream fileOut = new FileOutputStream(execlPath);
+        wb.write(fileOut);
+        fileOut.close();
+
+    }
+
+    public static void main(String args[]) throws IOException, InvalidFormatException {
 
         UpdateFilesWithTags lf = new UpdateFilesWithTags();
         System.out.println(lf.ssncTags);
 
         for (String directories : lf.dirPath) {
-            System.out.println(directories);
+//            System.out.println(directories);
             try {
                 lf.filesReadWrite(directories);
 
@@ -68,20 +88,19 @@ public class UpdateFilesWithTags {
         }
     }
 
-    public void filesReadWrite(String foldersPath) throws IOException {
+    public void filesReadWrite(String foldersPath) throws IOException, InvalidFormatException {
         subFolderPath = "";
         File directoryPath;
         File filesList[];
+        boolean tagFound = false;
 
         try {
             directoryPath = new File(foldersPath);
 
             //List of all files and directories
             filesList = directoryPath.listFiles();
-            System.out.println("List of files and directories in the specified directory:");
+//            System.out.println("List of files and directories in the specified directory:");
             for (File file : filesList) {
-                System.out.println("File path: " + file.getAbsolutePath());
-                System.out.println(" ");
 
                 FileReader reader = new FileReader(file.getAbsolutePath());
                 BufferedReader bufferedReader = new BufferedReader(reader);
@@ -97,30 +116,29 @@ public class UpdateFilesWithTags {
 
                 String toWrite = buffer.toString();
                 for (Map.Entry<String, String> entry : ssncTags.entrySet()) {
-                    toWrite = toWrite.replaceAll(entry.getKey(), entry.getValue());
+                    if (toWrite.contains(entry.getKey())) {
+                        System.out.println("File path: " + file.getAbsolutePath());
+                        toWrite = toWrite.replaceAll(entry.getKey(), entry.getValue());
+                        FileWriter writer = new FileWriter(file.getAbsolutePath());
+                        writer.write(toWrite);
+                        writer.close();
+                    }
                 }
-
-                FileWriter writer = new FileWriter(file.getAbsolutePath());
-                writer.write(toWrite);
-                writer.close();
             }
-
         } catch (FileNotFoundException e) {
             File folders = new File(foldersPath);
             String[] files = folders.list();
 
             for (String folder : files) {
-                System.out.println(folder);
+//                System.out.println(folder);
 
                 subFolderPath = foldersPath + "\\" + folder + "";
                 directoryPath = new File(subFolderPath);
 
-                //List of all files and directories
+//                List of all files and directories
                 filesList = directoryPath.listFiles();
-                System.out.println("List of files and directories in the specified directory:");
+//                System.out.println("List of files and directories in the specified directory:");
                 for (File file : filesList) {
-                    System.out.println("File path: " + file.getAbsolutePath());
-                    System.out.println(" ");
 
                     FileReader reader = new FileReader(file.getAbsolutePath());
                     BufferedReader bufferedReader = new BufferedReader(reader);
@@ -136,16 +154,17 @@ public class UpdateFilesWithTags {
 
                     String toWrite = buffer.toString();
                     for (Map.Entry<String, String> entry : ssncTags.entrySet()) {
-                        toWrite = toWrite.replaceAll(entry.getKey(), entry.getValue());
+                        if (toWrite.contains(entry.getKey())) {
+                            System.out.println("File path: " + file.getAbsolutePath());
+                            toWrite = toWrite.replaceAll(entry.getKey(), entry.getValue());
+                            FileWriter writer = new FileWriter(file.getAbsolutePath());
+                            writer.write(toWrite);
+                            writer.close();
+                        }
                     }
-
-                    FileWriter writer = new FileWriter(file.getAbsolutePath());
-                    writer.write(toWrite);
-                    writer.close();
-
                 }
             }
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Occured Null pointer exception");
         }
     }
